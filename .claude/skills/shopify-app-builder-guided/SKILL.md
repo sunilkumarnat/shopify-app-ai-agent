@@ -17,17 +17,31 @@ Build an embedded Shopify app with the official **React Router app template**, *
 
 ---
 
-## Phase 1: Discovery (ask, then wait)
+## Phase 1: Discovery (one question at a time)
 
-Ask these five questions in one message. Do not write code or run commands until they are answered.
+Ask the questions below **one at a time**. Send exactly one question per message, then stop and wait for the answer before asking the next. Never list several questions in one message. Do not write code or run commands until all five are answered.
 
-1. **App name?**
-2. **App description?** One or two sentences: who it's for and what problem it solves.
-3. **App features?** A list. Mark which are must-have for v1.
-4. **Billing?** Free, or paid. If paid: each plan's name, price, monthly or yearly, trial days, and which features each plan unlocks (or usage-based pricing).
-5. **Basic flow?** What the merchant does from install to getting value (for example: install, pick a plan, configure settings, see results on the dashboard).
+Start with a one-line intro ("I'll ask you 5 quick questions, one at a time."), then:
 
-If an answer is vague, ask one short follow-up. Then restate everything as a short summary and get a "yes" before Phase 2.
+1. **What's the name of your app?**
+2. **Describe your app in one or two sentences.** Who is it for, and what problem does it solve?
+3. **What features should it have?** List them, and mark which ones are must-have for the first version.
+4. **Will the app be free or paid?**
+   - If **free**, move on to question 5.
+   - If **paid**, ask these follow-ups one at a time:
+     a. What plans do you want? (name of each plan)
+     b. For each plan: price, and monthly or yearly?
+     c. Do you want a free trial? How many days?
+     d. Which features does each plan unlock?
+5. **What's the basic flow?** What does a merchant do from installing the app to getting value from it? (for example: install, pick a plan, set up settings, see results on the dashboard)
+
+Rules while asking:
+- Show the question number and total, like **"Question 2 of 5"**.
+- Briefly acknowledge each answer (one short line) before the next question.
+- If an answer is vague, ask one short follow-up about that answer only, then continue.
+- If the user answers several questions at once, accept them and skip to the next unanswered one.
+
+After the last answer, show a short summary of all five answers and ask: **"Is this correct? Shall I design the architecture?"** Wait for a "yes" before Phase 2.
 
 ---
 
@@ -61,11 +75,14 @@ Show the architecture and ask for edits. Do not continue until the user approves
 
 ### 2b. Connect the Shopify account
 
-Ask the user: **"Do you have a Shopify Partner account (Dev Dashboard organization) and a development store? Are you ready to log in?"**
+Ask these **one at a time**, waiting for each answer:
+
+1. **"Do you have a Shopify Partner account?"** If not, point them to https://www.shopify.com/partners to create one (free), and wait until they have it.
+2. **"Do you have a development store to test the app on?"** If not, offer to create one with `shopify store create dev` (show the command and wait for a yes).
+3. **"Are you ready to log in to Shopify? The CLI will open your browser."**
 
 - Check the toolchain first: `shopify version` (if missing: `npm install -g @shopify/cli@latest`; if old: `shopify upgrade`) and `node -v`.
 - Login happens through Shopify CLI's browser flow the first time a command needs it. Never ask for passwords, API secrets or tokens in chat.
-- If they have no dev store, offer `shopify store create dev` (show the command and wait for a yes).
 - Optionally ask for the **organization ID** (from the Dev Dashboard URL) so `app init` can run without prompts.
 
 ---

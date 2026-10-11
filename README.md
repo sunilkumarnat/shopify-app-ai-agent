@@ -33,7 +33,7 @@ The skill runs three phases in order and stops for your approval between each on
 
 ### Phase 1: Discovery
 
-Claude asks five questions in one message:
+Claude asks five questions **one at a time**, waiting for your answer before the next. Paid apps get short follow-ups about plans, prices, trials and features.
 
 | # | Question | What to give |
 |---|----------|--------------|
@@ -58,7 +58,7 @@ Claude reads the current Shopify docs through the Dev MCP and writes an `ARCHITE
 - **Extensions**: only if a feature needs one
 - **Build order**: small milestones you can test one at a time
 
-You review and edit it. Then Claude asks whether you have a **Shopify Partner account** (Dev Dashboard organization) and a **development store**, and checks that Shopify CLI is installed.
+You review and edit it. Then Claude checks that Shopify CLI is installed and asks, one at a time, whether you have a **Shopify Partner account**, whether you have a **development store**, and whether you're ready to log in.
 
 ### Phase 3: Create and build
 
@@ -173,7 +173,7 @@ In Claude Code you can also call it directly:
 
 Then:
 
-1. **Answer the five questions.** The more specific your features and flow, the better the architecture.
+1. **Answer the questions as they come.** Claude asks one at a time. The more specific your features and flow, the better the architecture.
 2. **Review `ARCHITECTURE.md`.** Change pages, scopes or plans now; it's much cheaper than later.
 3. **Confirm your Partner account and dev store**, and log in when Shopify CLI opens the browser.
 4. **Say "yes"** when Claude shows the `shopify app init` command.
@@ -194,18 +194,31 @@ Then:
 ```text
 You:    Help me build a Shopify app.
 
-Claude: Great, a few questions first:
-        1. App name?
-        2. App description?
-        3. App features?
-        4. Billing: free or paid? If paid, which plans?
-        5. Basic flow?
+Claude: I'll ask you 5 quick questions, one at a time.
+        Question 1 of 5: What's the name of your app?
 
-You:    1. Stock Alert Pro
-        2. Emails merchants when products run low on stock.
-        3. Low-stock threshold per product, daily email digest, dashboard of low items
-        4. Free plan (10 products), Pro $9.99/month (unlimited, 7-day trial)
-        5. Install → pick plan → set thresholds → see dashboard → get emails
+You:    Stock Alert Pro
+
+Claude: Nice name.
+        Question 2 of 5: Describe your app in one or two sentences.
+
+You:    Emails merchants when products run low on stock.
+
+Claude: Question 3 of 5: What features should it have?
+
+You:    Low-stock threshold per product, daily email digest, dashboard of low items
+
+Claude: Question 4 of 5: Will the app be free or paid?
+
+You:    Paid.
+
+Claude: What plans do you want?
+
+You:    Free (10 products) and Pro $9.99/month (unlimited, 7-day trial)
+
+Claude: Question 5 of 5: What's the basic flow?
+
+You:    Install → pick plan → set thresholds → see dashboard → get emails
 
 Claude: Here's the summary... Shall I design the architecture?
 
